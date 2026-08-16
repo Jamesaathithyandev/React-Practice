@@ -3,16 +3,23 @@ import './App.css'
 import Navbar from './navbar.jsx'
 import Course from './course.jsx'
 import Footer from './footer.jsx'
+import html from './assets/html.jpg'
+import css from './assets/css.jpg'
+import javascript from './assets/javascript.jpg'
 
 function App() {
 
   return (
     <>
-    <Navbar/>
+    
 
-    <Course/>
+    <Course name="HTML" price="$199" img={html}/> 
 
-    <Footer/>
+    <Course name="CSS" price="$199" img={css}/>
+    
+    <Course name="Javascript" price="$299" img={javascript}/>
+
+    
     </>
   )
 }

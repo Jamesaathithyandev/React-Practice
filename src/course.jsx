@@ -1,9 +1,9 @@
-function Course(){
+function Course(props){
     return(
-        <div>
-            <img src="" alt=""/>
-            <h2>HTML</h2>
-            <p>This is a HTML Course</p>
+        <div className="card">
+            <img src={props.img} alt=""/>
+            <h2>{props.name}</h2>
+            <p>{props.price}</p>
         </div>
     )
 }
