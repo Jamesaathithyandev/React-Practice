@@ -6,19 +6,21 @@ import Course from './course.jsx'
 function CourseList() {
     const courses = [
         {   name:"HTML", 
-            price:"$199", 
+            price:199, 
             img:html
         },
         {
             name:"CSS", 
-            price:"$199", 
+            price:299, 
             img:css
         },
         {   name:"Javascript", 
-            price:"$299", 
+            price:499, 
             img:javascript
         }
     ]
+
+    courses.sort((x, y) => y.price - x.price);
 
     const coursesList = courses.map((course) => 
     <Course name={course.name} 
