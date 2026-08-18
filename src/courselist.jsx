@@ -22,9 +22,9 @@ function CourseList() {
 
     courses.sort((x, y) => y.price - x.price);
 
-    const lesscourse = courses.filter((course) => course.price<300)
+    /* const lesscourse = courses.filter((course) => course.price<300) */
 
-    const coursesList = lesscourse.map((course) => 
+    const coursesList = courses.map((course) => 
     <Course name={course.name} 
             price={course.price} 
             img={course.img}/>)
