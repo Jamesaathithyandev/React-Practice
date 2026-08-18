@@ -1,34 +1,28 @@
-import html from './assets/html.jpg'
-import css from './assets/css.jpg'
-import javascript from './assets/javascript.jpg'
 import Course from './course.jsx'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
 function CourseList() {
-    const [courses, setCourses] = useState([
-        {   id:1,
-            name:"HTML", 
-            price:199, 
-            img:html
-        },
-        {   id:2,
-            name:"CSS", 
-            price:299, 
-            img:css
-        },
-        {   id:3,
-            name:"Javascript", 
-            price:499, 
-            img:javascript
-        }
-    ])
+    const [courses, setCourses] = useState(null);
+
+    const [error, setError] = useState(null);
     
-    const [dummy, setDummy] = useState(true);
+  
 
     useEffect(() => {
-        console.log("Effect Called");
-        console.log(dummy);
+        setTimeout(() => {
+        fetch("http://localhost:3000/courses")
+        .then(response => {
+            if(!response.ok){
+                throw Error("Could Retrieve Data: Error 404")
+            }
+            return response.json()
+        }).then(data => setCourses(data))
+    .catch((error) => {
+        setError(error.message);
+    
+    })}, 2000)
+
         
     },[]);
 
@@ -38,7 +32,16 @@ function CourseList() {
     }
 
 
-    courses.sort((x, y) => y.price - x.price);
+    // courses.sort((x, y) => y.price - x.price);
+
+    if(!courses){
+        return (
+        <>
+        {!error && <p style={{color: 'white'}}>loading...</p>}
+        {error && <p style={{color: 'white'}}>{error}</p>}
+        </>
+        )
+    }
 
     
 
