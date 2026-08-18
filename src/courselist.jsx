@@ -1,30 +1,11 @@
 import Course from './course.jsx'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import useFetch from './useFetch.jsx';
 
 function CourseList() {
-    const [courses, setCourses] = useState(null);
-
-    const [error, setError] = useState(null);
     
-  
-
-    useEffect(() => {
-        setTimeout(() => {
-        fetch("http://localhost:3000/courses")
-        .then(response => {
-            if(!response.ok){
-                throw Error("Could Retrieve Data: Error 404")
-            }
-            return response.json()
-        }).then(data => setCourses(data))
-    .catch((error) => {
-        setError(error.message);
-    
-    })}, 2000)
-
-        
-    },[]);
+    const [courses, error] = useFetch("http://localhost:3000/courses");
 
     function HandleDelete(id){
         const newcourse = courses.filter((course) => course.id !== id);
