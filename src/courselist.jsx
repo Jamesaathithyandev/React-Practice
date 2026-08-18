@@ -24,10 +24,12 @@ function CourseList() {
 
     /* const lesscourse = courses.filter((course) => course.price<300) */
 
-    const coursesList = courses.map((course) => 
-    <Course name={course.name} 
+    const coursesList = courses.map((course,index) => 
+    <Course key = {index}
+            name={course.name} 
             price={course.price} 
             img={course.img}/>)
+
 
     return(
         <>
