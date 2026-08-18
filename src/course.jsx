@@ -16,6 +16,7 @@ function Course(props) {
                 <h2>{props.name}</h2>
                 <p>{props.price}</p>
                 <button onClick={() => BuyCourse(20)}>Buy Now</button>
+                <button onClick={() => props.delete(props.id)}>Delete</button>
                 <p>{purchased ? "Course Purchased!" : "Limited Slots"} </p>
             </div>
         )
